@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraProcessingViewController.h"
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) CameraProcessingViewController *cameraProcessingViewController;
 
 @end
 

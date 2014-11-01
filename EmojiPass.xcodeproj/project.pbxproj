@@ -15,6 +15,18 @@
 		5471DFF91A055C4F00A894BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5471DFF81A055C4F00A894BE /* Images.xcassets */; };
 		5471DFFC1A055C4F00A894BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */; };
 		5471E0081A055C5000A894BE /* EmojiPassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471E0071A055C5000A894BE /* EmojiPassTests.m */; };
+		5471E0121A055F6500A894BE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0111A055F6500A894BE /* opencv2.framework */; };
+		5471E0191A0574D200A894BE /* CameraProcessingViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5471E0181A0574D200A894BE /* CameraProcessingViewController.mm */; };
+		5471E01B1A05851B00A894BE /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E01A1A05851B00A894BE /* Accelerate.framework */; };
+		5471E01D1A05852300A894BE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E01C1A05852300A894BE /* AssetsLibrary.framework */; };
+		5471E01F1A05852900A894BE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E01E1A05852900A894BE /* AVFoundation.framework */; };
+		5471E0211A05853500A894BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0201A05853500A894BE /* CoreGraphics.framework */; };
+		5471E0231A05853E00A894BE /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0221A05853E00A894BE /* CoreImage.framework */; };
+		5471E0251A05855200A894BE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0241A05855200A894BE /* CoreMedia.framework */; };
+		5471E0271A05855B00A894BE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0261A05855B00A894BE /* CoreVideo.framework */; };
+		5471E0291A05856300A894BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0281A05856300A894BE /* QuartzCore.framework */; };
+		5471E02B1A05856A00A894BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02A1A05856A00A894BE /* UIKit.framework */; };
+		5471E02D1A05857100A894BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02C1A05857100A894BE /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +54,20 @@
 		5471E0011A055C5000A894BE /* EmojiPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5471E0061A055C5000A894BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5471E0071A055C5000A894BE /* EmojiPassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiPassTests.m; sourceTree = "<group>"; };
+		5471E0111A055F6500A894BE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		5471E0131A0562A200A894BE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = EmojiPass/PrefixHeader.pch; sourceTree = "<group>"; };
+		5471E0171A0574D200A894BE /* CameraProcessingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraProcessingViewController.h; sourceTree = "<group>"; };
+		5471E0181A0574D200A894BE /* CameraProcessingViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraProcessingViewController.mm; sourceTree = "<group>"; };
+		5471E01A1A05851B00A894BE /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		5471E01C1A05852300A894BE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5471E01E1A05852900A894BE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5471E0201A05853500A894BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5471E0221A05853E00A894BE /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		5471E0241A05855200A894BE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5471E0261A05855B00A894BE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5471E0281A05856300A894BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5471E02A1A05856A00A894BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5471E02C1A05857100A894BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +75,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5471E0121A055F6500A894BE /* opencv2.framework in Frameworks */,
+				5471E01B1A05851B00A894BE /* Accelerate.framework in Frameworks */,
+				5471E01D1A05852300A894BE /* AssetsLibrary.framework in Frameworks */,
+				5471E01F1A05852900A894BE /* AVFoundation.framework in Frameworks */,
+				5471E0211A05853500A894BE /* CoreGraphics.framework in Frameworks */,
+				5471E0231A05853E00A894BE /* CoreImage.framework in Frameworks */,
+				5471E0251A05855200A894BE /* CoreMedia.framework in Frameworks */,
+				5471E0271A05855B00A894BE /* CoreVideo.framework in Frameworks */,
+				5471E0291A05856300A894BE /* QuartzCore.framework in Frameworks */,
+				5471E02B1A05856A00A894BE /* UIKit.framework in Frameworks */,
+				5471E02D1A05857100A894BE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +102,17 @@
 		5471DFDC1A055C4F00A894BE = {
 			isa = PBXGroup;
 			children = (
+				5471E02C1A05857100A894BE /* Foundation.framework */,
+				5471E02A1A05856A00A894BE /* UIKit.framework */,
+				5471E0281A05856300A894BE /* QuartzCore.framework */,
+				5471E0261A05855B00A894BE /* CoreVideo.framework */,
+				5471E0241A05855200A894BE /* CoreMedia.framework */,
+				5471E0221A05853E00A894BE /* CoreImage.framework */,
+				5471E0201A05853500A894BE /* CoreGraphics.framework */,
+				5471E01E1A05852900A894BE /* AVFoundation.framework */,
+				5471E01C1A05852300A894BE /* AssetsLibrary.framework */,
+				5471E01A1A05851B00A894BE /* Accelerate.framework */,
+				5471E0131A0562A200A894BE /* PrefixHeader.pch */,
 				5471DFE71A055C4F00A894BE /* EmojiPass */,
 				5471E0041A055C5000A894BE /* EmojiPassTests */,
 				5471DFE61A055C4F00A894BE /* Products */,
@@ -87,6 +135,8 @@
 				5471DFED1A055C4F00A894BE /* AppDelegate.m */,
 				5471DFF21A055C4F00A894BE /* ViewController.h */,
 				5471DFF31A055C4F00A894BE /* ViewController.m */,
+				5471E0171A0574D200A894BE /* CameraProcessingViewController.h */,
+				5471E0181A0574D200A894BE /* CameraProcessingViewController.mm */,
 				5471DFF51A055C4F00A894BE /* Main.storyboard */,
 				5471DFF81A055C4F00A894BE /* Images.xcassets */,
 				5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */,
@@ -100,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				5471DFE91A055C4F00A894BE /* Info.plist */,
+				5471E0111A055F6500A894BE /* opencv2.framework */,
 				5471DFEA1A055C4F00A894BE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -223,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */,
+				5471E0191A0574D200A894BE /* CameraProcessingViewController.mm in Sources */,
 				5471DFEE1A055C4F00A894BE /* AppDelegate.m in Sources */,
 				5471DFF41A055C4F00A894BE /* ViewController.m in Sources */,
 				5471DFEB1A055C4F00A894BE /* main.m in Sources */,
@@ -347,6 +399,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmojiPass",
+				);
+				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +414,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EmojiPass",
+				);
+				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
