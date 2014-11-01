@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5471DFEB1A055C4F00A894BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFEA1A055C4F00A894BE /* main.m */; };
+		5471DFEE1A055C4F00A894BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFED1A055C4F00A894BE /* AppDelegate.m */; };
+		5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */; };
+		5471DFF41A055C4F00A894BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFF31A055C4F00A894BE /* ViewController.m */; };
+		5471DFF71A055C4F00A894BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5471DFF51A055C4F00A894BE /* Main.storyboard */; };
+		5471DFF91A055C4F00A894BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5471DFF81A055C4F00A894BE /* Images.xcassets */; };
+		5471DFFC1A055C4F00A894BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */; };
+		5471E0081A055C5000A894BE /* EmojiPassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471E0071A055C5000A894BE /* EmojiPassTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5471E0021A055C5000A894BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5471DFDD1A055C4F00A894BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5471DFE41A055C4F00A894BE;
+			remoteInfo = EmojiPass;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5471DFE51A055C4F00A894BE /* EmojiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5471DFE91A055C4F00A894BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5471DFEA1A055C4F00A894BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5471DFEC1A055C4F00A894BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5471DFED1A055C4F00A894BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5471DFF01A055C4F00A894BE /* EmojiPass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmojiPass.xcdatamodel; sourceTree = "<group>"; };
+		5471DFF21A055C4F00A894BE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5471DFF31A055C4F00A894BE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5471DFF61A055C4F00A894BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5471DFF81A055C4F00A894BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5471DFFB1A055C4F00A894BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5471E0011A055C5000A894BE /* EmojiPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5471E0061A055C5000A894BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5471E0071A055C5000A894BE /* EmojiPassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiPassTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5471DFE21A055C4F00A894BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5471DFFE1A055C5000A894BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5471DFDC1A055C4F00A894BE = {
+			isa = PBXGroup;
+			children = (
+				5471DFE71A055C4F00A894BE /* EmojiPass */,
+				5471E0041A055C5000A894BE /* EmojiPassTests */,
+				5471DFE61A055C4F00A894BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5471DFE61A055C4F00A894BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5471DFE51A055C4F00A894BE /* EmojiPass.app */,
+				5471E0011A055C5000A894BE /* EmojiPassTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5471DFE71A055C4F00A894BE /* EmojiPass */ = {
+			isa = PBXGroup;
+			children = (
+				5471DFEC1A055C4F00A894BE /* AppDelegate.h */,
+				5471DFED1A055C4F00A894BE /* AppDelegate.m */,
+				5471DFF21A055C4F00A894BE /* ViewController.h */,
+				5471DFF31A055C4F00A894BE /* ViewController.m */,
+				5471DFF51A055C4F00A894BE /* Main.storyboard */,
+				5471DFF81A055C4F00A894BE /* Images.xcassets */,
+				5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */,
+				5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */,
+				5471DFE81A055C4F00A894BE /* Supporting Files */,
+			);
+			path = EmojiPass;
+			sourceTree = "<group>";
+		};
+		5471DFE81A055C4F00A894BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5471DFE91A055C4F00A894BE /* Info.plist */,
+				5471DFEA1A055C4F00A894BE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5471E0041A055C5000A894BE /* EmojiPassTests */ = {
+			isa = PBXGroup;
+			children = (
+				5471E0071A055C5000A894BE /* EmojiPassTests.m */,
+				5471E0051A055C5000A894BE /* Supporting Files */,
+			);
+			path = EmojiPassTests;
+			sourceTree = "<group>";
+		};
+		5471E0051A055C5000A894BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5471E0061A055C5000A894BE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5471DFE41A055C4F00A894BE /* EmojiPass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5471E00B1A055C5000A894BE /* Build configuration list for PBXNativeTarget "EmojiPass" */;
+			buildPhases = (
+				5471DFE11A055C4F00A894BE /* Sources */,
+				5471DFE21A055C4F00A894BE /* Frameworks */,
+				5471DFE31A055C4F00A894BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmojiPass;
+			productName = EmojiPass;
+			productReference = 5471DFE51A055C4F00A894BE /* EmojiPass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5471E0001A055C5000A894BE /* EmojiPassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5471E00E1A055C5000A894BE /* Build configuration list for PBXNativeTarget "EmojiPassTests" */;
+			buildPhases = (
+				5471DFFD1A055C5000A894BE /* Sources */,
+				5471DFFE1A055C5000A894BE /* Frameworks */,
+				5471DFFF1A055C5000A894BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5471E0031A055C5000A894BE /* PBXTargetDependency */,
+			);
+			name = EmojiPassTests;
+			productName = EmojiPassTests;
+			productReference = 5471E0011A055C5000A894BE /* EmojiPassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5471DFDD1A055C4F00A894BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Mimee Xu";
+				TargetAttributes = {
+					5471DFE41A055C4F00A894BE = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5471E0001A055C5000A894BE = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5471DFE41A055C4F00A894BE;
+					};
+				};
+			};
+			buildConfigurationList = 5471DFE01A055C4F00A894BE /* Build configuration list for PBXProject "EmojiPass" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5471DFDC1A055C4F00A894BE;
+			productRefGroup = 5471DFE61A055C4F00A894BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5471DFE41A055C4F00A894BE /* EmojiPass */,
+				5471E0001A055C5000A894BE /* EmojiPassTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5471DFE31A055C4F00A894BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5471DFF71A055C4F00A894BE /* Main.storyboard in Resources */,
+				5471DFFC1A055C4F00A894BE /* LaunchScreen.xib in Resources */,
+				5471DFF91A055C4F00A894BE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5471DFFF1A055C5000A894BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5471DFE11A055C4F00A894BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */,
+				5471DFEE1A055C4F00A894BE /* AppDelegate.m in Sources */,
+				5471DFF41A055C4F00A894BE /* ViewController.m in Sources */,
+				5471DFEB1A055C4F00A894BE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5471DFFD1A055C5000A894BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5471E0081A055C5000A894BE /* EmojiPassTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5471E0031A055C5000A894BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5471DFE41A055C4F00A894BE /* EmojiPass */;
+			targetProxy = 5471E0021A055C5000A894BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5471DFF51A055C4F00A894BE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5471DFF61A055C4F00A894BE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5471DFFB1A055C4F00A894BE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5471E0091A055C5000A894BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5471E00A1A055C5000A894BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5471E00C1A055C5000A894BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EmojiPass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5471E00D1A055C5000A894BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EmojiPass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5471E00F1A055C5000A894BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EmojiPassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiPass.app/EmojiPass";
+			};
+			name = Debug;
+		};
+		5471E0101A055C5000A894BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EmojiPassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmojiPass.app/EmojiPass";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5471DFE01A055C4F00A894BE /* Build configuration list for PBXProject "EmojiPass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5471E0091A055C5000A894BE /* Debug */,
+				5471E00A1A055C5000A894BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5471E00B1A055C5000A894BE /* Build configuration list for PBXNativeTarget "EmojiPass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5471E00C1A055C5000A894BE /* Debug */,
+				5471E00D1A055C5000A894BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5471E00E1A055C5000A894BE /* Build configuration list for PBXNativeTarget "EmojiPassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5471E00F1A055C5000A894BE /* Debug */,
+				5471E0101A055C5000A894BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5471DFF01A055C4F00A894BE /* EmojiPass.xcdatamodel */,
+			);
+			currentVersion = 5471DFF01A055C4F00A894BE /* EmojiPass.xcdatamodel */;
+			path = EmojiPass.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5471DFDD1A055C4F00A894BE /* Project object */;
+}
