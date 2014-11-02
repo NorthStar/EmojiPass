@@ -11,7 +11,7 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic, readwrite) UIButton *calibrateButton;
+@property (strong, nonatomic, readwrite) UIButton *successButton;
 @property (strong, nonatomic, readwrite) UIButton *payButton;
 @property (strong, nonatomic, readwrite) NSMutableDictionary *faceValue;
 
@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
+    
     
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.jpg"]];
@@ -33,8 +33,10 @@
     CGRect insetBounds = self.view.bounds;
     
     // Initialize buttons
-    self.calibrateButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, 60, insetBounds.size.width, 100);
+    self.successButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    self.successButton.frame = CGRectMake(insetBounds.origin.x, 60, insetBounds.size.width, 140);
+    self.successButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:26];
+    self.successButton.hidden = YES;
     
     self.payButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 350, insetBounds.size.width, 100)];
     self.payButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:26];
@@ -43,52 +45,47 @@
     [self.payButton setTitle:@"Submit Payment" forState:UIControlStateNormal];
     
     // Add button actions
-    [self.calibrateButton addTarget:self action:@selector(calibrateButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.successButton addTarget:self action:@selector(calibrateButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.payButton addTarget:self action:@selector(payButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     // Add to view
-    [self.view addSubview:self.calibrateButton];
+    [self.view addSubview:self.successButton];
     [self.view addSubview:self.payButton];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
+    if ([object isKindOfClass:[CameraProcessingViewController class]]) {
         if ([keyPath isEqualToString:@"masterProperty"]) {
             NSLog(@"camera processing view controller state: %@", change);
             
             if ([[object currentString] isEqualToString:@"!_!"]) {
-                
-//                self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
-                if ([self compare:self.faceValue with:[NSMutableDictionary dictionaryWithDictionary:change]]) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                                    message:@"Success"
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil
-                                          ];
-                    [alert show];
-                } else {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
-                                                                    message:@"Failure"
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil
-                                          ];
-                    [alert show];
-                }
-                
                 @try {
                     [object removeObserver:self forKeyPath:@"masterProperty"];
                 }
                 @catch (NSException * __unused exception) {}
+                
+                self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
+                
+//                self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
+                if ([self compare:self.faceValue with:[NSMutableDictionary dictionaryWithDictionary:change]]) {
+                    self.successButton.hidden = NO;
+                    self.successButton.titleLabel.text = @"Success";
+                    self.successButton.backgroundColor = [UIColor greenColor];
+                } else {
+                    self.successButton.hidden = NO;
+                    self.successButton.titleLabel.text = @"Failure";
+                    self.successButton.backgroundColor = [UIColor redColor];
+                }
+
             }
         }
-    //}
+    }
 }
 
 - (BOOL)compare: (NSMutableDictionary *)left with: (NSMutableDictionary *)right{
-    
-    for (NSString *key in @[@":-)",@";-P",@":-D"]) {
+    left = [left objectForKey:@"new"];
+    right = [right objectForKey:@"new"];
+    for (NSString *key in @[@"!_!"]) {//@[@":-)",@";-P",@":-D"]) {
         NSDictionary *leftD = [left objectForKey:key];
         NSDictionary *rightD = [right objectForKey:key];
         if (![[leftD objectForKey:@"gender"] isEqualToString:[rightD objectForKey:@"gender"]]) {
@@ -115,10 +112,8 @@
 }
 
 #pragma mark - Button Actions
-- (void)calibrateButtonPressed {
-    CameraProcessingViewController *calibrateCamera = [[CameraProcessingViewController alloc] init];
-    [calibrateCamera addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
-    [self presentViewController:calibrateCamera animated:YES completion:nil];
+- (void)successButtonPressed {
+    self.successButton.hidden = TRUE;
     
     return;
 }

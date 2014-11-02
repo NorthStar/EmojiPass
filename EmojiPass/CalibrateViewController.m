@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
+    //self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.jpg"]];
     bgImageView.frame = self.view.bounds;
@@ -49,21 +49,21 @@
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
+    if ([object isKindOfClass:[CameraProcessingViewController class]]) {
     if ([keyPath isEqualToString:@"masterProperty"]) {
         NSLog(@"camera processing view controller state: %@", change);
         
         if ([[object currentString] isEqualToString:@"!_!"]) {
             
-            self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
-            
+            //self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
+            [((AppDelegate *)[[UIApplication sharedApplication] delegate]) setFaceValue:[NSMutableDictionary dictionaryWithDictionary:change]]; //setFaceValue:[NSMutableDictionary dictionaryWithDictionary:change]];
             @try {
                 [object removeObserver:self forKeyPath:@"masterProperty"];
             }
             @catch (NSException * __unused exception) {}
         }
     }
-    //}
+    }
 }
 
 - (void)calibrateButtonPressed {

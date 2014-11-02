@@ -160,7 +160,7 @@ using namespace cv;
 
 - (void)postFaceToAmazon: (UIImage *)image {
 
-    if ([self.count intValue] >= 80) {
+    if ([self.count intValue] >= 60) {
         [self stopTapingForSmiles];
         return;
     }
@@ -235,7 +235,7 @@ using namespace cv;
 
 //Problem: the emoticon and the analysis are not yet associated
 - (void)saveFacialFeature: (NSDictionary *)dictionaryData {
-    if ([self.callBackCount intValue] >= 70) {
+    if ([self.callBackCount intValue] >= 30) {
         [self stopProcessing];
     }
     NSArray *face = [dictionaryData objectForKey:@"face"];
@@ -255,6 +255,9 @@ using namespace cv;
         
         [self.globalProperty setObject:position forKey:@"position"];
         [self.globalProperty setObject:[[[[face firstObject] objectForKey:@"attribute"] objectForKey:@"gender"] objectForKey:@"value"] forKey:@"gender"];
+        [self.globalProperty setObject:[[[[face firstObject] objectForKey:@"attribute"] objectForKey:@"race"] objectForKey:@"value"] forKey:@"race"];
+        [self.globalProperty setObject:[[[[face firstObject] objectForKey:@"attribute"] objectForKey:@"smiling"] objectForKey:@"value"] forKey:@"smiling"];
+        
     }
 }
 
@@ -299,16 +302,24 @@ using namespace cv;
     
     if (![self.currentString isEqualToString:@"!_!"]) {
         self.callBackCount = [NSNumber numberWithInt:50];
+        if (self.globalProperty) {
+            [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+        }
 //        [self.videoCamera start];
     } else {
         if (self.globalProperty) {
             if ([self.state isEqualToString:@"calibrate"]) {
-                [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+                NSMutableDictionary *tmp = self.masterProperty;
+                [tmp setObject:self.globalProperty forKey:self.currentString];
+                self.masterProperty = tmp;
                 if ([self.currentString isEqualToString:@"!_!"]) {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
             } else {
                     //compare stuff
+                NSMutableDictionary *tmp = self.masterProperty;
+                [tmp setObject:self.globalProperty forKey:self.currentString];
+                self.masterProperty = tmp;
                     if ([self.currentString isEqualToString:@"!_!"]) {
                         [self dismissViewControllerAnimated:YES completion:nil];
                     }
