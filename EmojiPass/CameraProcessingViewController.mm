@@ -102,7 +102,7 @@ using namespace cv;
     // Do some OpenCV stuff with the image
     Mat image_copy;
     cvtColor(image, image_copy, COLOR_BGR2GRAY);
-    if ([self.count intValue] < 50) {
+    if ([self.count intValue] < 50 ||[self.count intValue] > 300) {
         // invert image
         // bitwise_not(image_copy, image_copy);
         
@@ -235,7 +235,7 @@ using namespace cv;
 
 //Problem: the emoticon and the analysis are not yet associated
 - (void)saveFacialFeature: (NSDictionary *)dictionaryData {
-    if ([self.callBackCount intValue] == 80) {
+    if ([self.callBackCount intValue] >= 70) {
         [self stopProcessing];
     }
     NSArray *face = [dictionaryData objectForKey:@"face"];
@@ -290,22 +290,27 @@ using namespace cv;
         });*/
         
         //at least make all views disppear
-        [self dismissViewControllerAnimated:YES completion:nil];
+
     }
 }
 
 - (void)stopProcessing {
 /*    [ProgressHUD dismiss];*/
     
-    if (![self.currentString isEqualToString:@":-D"]) {
+    if (![self.currentString isEqualToString:@"!_!"]) {
         self.callBackCount = [NSNumber numberWithInt:50];
 //        [self.videoCamera start];
     } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
         if (self.globalProperty) {
             if ([self.state isEqualToString:@"calibrate"]) {
                 [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
             } else {
-                [self compare:[NSMutableDictionary dictionaryWithDictionary:((NSDictionary *)[self.masterProperty objectForKey:self.currentString])] with: self.globalProperty];
+                    //compare stuff
+                    if ([self.currentString isEqualToString:@"!_!"]) {
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
             }
         }
     }
