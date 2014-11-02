@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic, readwrite) UIButton *calibrateButton;
 @property (strong, nonatomic, readwrite) UIButton *payButton;
-//@property (strong, nonatomic, readwrite) UIButton *addCardButton;
 
 @end
 
@@ -20,36 +19,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.jpg"]];
+    bgImageView.frame = self.view.bounds;
+    [self.view addSubview:bgImageView];
+    [self.view sendSubviewToBack:bgImageView];
+    
     CGRect insetBounds = self.view.bounds;
     
     // Initialize buttons
     self.calibrateButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, insetBounds.size.height/3, insetBounds.size.width, 100);
+    self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, 80, insetBounds.size.width, 100);
     
-    self.payButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 250, insetBounds.size.width, 100)];
-    self.payButton.backgroundColor = [UIColor blueColor];
-    
-    [self.payButton setTitle:@"PAY" forState:UIControlStateNormal];
-    
-    
-//    self.addCardButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 360, insetBounds.size.width, 100)];
-//    self.addCardButton.backgroundColor = [UIColor blueColor];
-//    [self.addCardButton setTitle:@"Add Credit Card" forState:UIControlStateNormal];
+    self.payButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 350, insetBounds.size.width, 100)];
+    self.payButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:26];
+    self.payButton.backgroundColor = [UIColor grayColor];
+    self.payButton.alpha = 0.65f;
+    [self.payButton setTitle:@"Submit Payment" forState:UIControlStateNormal];
     
     // Add button actions
     [self.calibrateButton addTarget:self action:@selector(calibrateButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.payButton addTarget:self action:@selector(processPayment) forControlEvents:UIControlEventTouchUpInside];
-    //[self.addCardButton addTarget:self action:@selector(addCreditCard) forControlEvents:UIControlEventTouchUpInside];
     
     // Add to view
     [self.view addSubview:self.calibrateButton];
     [self.view addSubview:self.payButton];
-    //[self.view addSubview:self.addCardButton];
-    
-    // Do any additional setup after loading the view, typically from a nib.
 }
-
-
 
 #pragma mark - Button Actions
 - (void)calibrateButtonPressed {
@@ -63,16 +58,6 @@
     [self presentViewController:payCamera animated:YES completion:nil];
     return;
 }
-
-- (void)addCreditCard {
-    CreditCardViewController *creditCardViewController = [[CreditCardViewController alloc] init];
-
-    [self presentViewController:creditCardViewController animated:YES completion:nil];
-}
-
-//- (IBAction)testbutton:(id)sender {
-//        [self performSegueWithIdentifier:@"setupUser" sender:self];
-//}
 
 - (void)processPayment {
     [[MercuryClient sharedClient] processPaymentAmount:1.00

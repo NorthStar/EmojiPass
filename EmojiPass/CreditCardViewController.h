@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CameraProcessingViewController.h"
+#import "CalibrateViewController.h"
 
 @interface CreditCardViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *creditCard;
 @property (strong, nonatomic) IBOutlet UITextField *expiry;
 @property (strong, nonatomic) IBOutlet UITextField *cvc;
-- (IBAction)cvcFinished:(id)sender;
+
+- (IBAction)cvcText:(id)sender;
 
 @end
