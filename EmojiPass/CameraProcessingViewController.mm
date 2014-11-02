@@ -12,6 +12,7 @@
 #import <Firebase/Firebase.h>
 #import "AFHTTPRequestOperationManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ProgressHUD.h"
 
 using namespace cv;
 @interface CameraProcessingViewController: UIViewController<CvVideoCameraDelegate>// ()
@@ -158,8 +159,10 @@ using namespace cv;
 
 
 - (void)postFaceToAmazon: (UIImage *)image {
-    
-    if ([self.count intValue] >= 80) {
+    if ([self.count intValue]%2 == 0) {
+        return;
+    }
+    if ([self.count intValue] >= 160) {
         [self stopTapingForSmiles];
         return;
     }
@@ -200,41 +203,41 @@ using namespace cv;
         
         //Call your function or whatever work that needs to be done
         //Code in this part is run on a background thread
+        [[UNIRest get:^(UNISimpleRequest *request) {
+            [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
+            [request setHeaders:headers];
+        }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+            
+            /* If I need the rest of the return */
+            //NSInteger code = response.code;
+            //NSDictionary *responseHeaders = response.headers;
+            //UNIJsonNode *body = response.body;
+            
+            if (error) {
+                return;
+            }
+            NSData *rawBody = response.rawBody;
+            NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
+            NSLog(@"%@", tideData);
+            self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
+            
+            [self saveFacialFeature:tideData];
+        }];
+
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             
             //Stop your activity indicator or anything else with the GUI
             //Code here is run on the main thread
             
-            [[UNIRest get:^(UNISimpleRequest *request) {
-                [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
-                [request setHeaders:headers];
-            }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
-                
-                /* If I need the rest of the return */
-                //NSInteger code = response.code;
-                //NSDictionary *responseHeaders = response.headers;
-                //UNIJsonNode *body = response.body;
-                
-                if (error) {
-                    return;
-                }
-                NSData *rawBody = response.rawBody;
-                NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
-                NSLog(@"%@", tideData);
-                self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
-                
-                [self saveFacialFeature:tideData];
-            }];
             
         });
     });
 }
 
-
-
+//Problem: the emoticon and the analysis are not yet associated
 - (void)saveFacialFeature: (NSDictionary *)dictionaryData {
-    if ([self.callBackCount intValue] >= 30) {
+    if ([self.callBackCount intValue] >= 27) {
         [self stopProcessing];
     }
     
@@ -261,10 +264,15 @@ using namespace cv;
 - (void)stopTapingForSmiles {
     if ([self.currentString isEqualToString:@":)"]) {
         self.currentString = @";-P";
+        [self.textLabel removeFromSuperview];
     }
-    //(important to say else here)
+        //(important to say else here)
     else if ([self.currentString isEqualToString:@";-P"]) {
         self.currentString = @":-D";
+    }
+    
+    else if ([self.currentString isEqualToString:@":-D"]) {
+        self.currentString = @"!_!";
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -272,12 +280,18 @@ using namespace cv;
     });
     
     [self.videoCamera stop];
-    [self.view layoutIfNeeded];
-    [self.view bringSubviewToFront:self.imageView];
+ /*   [self.view layoutIfNeeded];
+    [self.view bringSubviewToFront:self.imageView];*/
     
-    if (![self.currentString isEqualToString:@":-D"]) {
+    if (![self.currentString isEqualToString:@"!_!"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ProgressHUD show:@"Please wait..."];
+        });
         self.count = [NSNumber numberWithInt:30];
-        [self.videoCamera start];
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ProgressHUD show:@"Please wait..."];
+        });
     }
 }
 
@@ -288,9 +302,16 @@ using namespace cv;
     [self.emoticonLabel setText:@":P"];
 }
 - (void)stopProcessing {
-    if (self.globalProperty) {
-        [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
-        [self dismissViewControllerAnimated:YES completion:nil];
+    if (![self.currentString isEqualToString:@":-D"]) {
+        self.callBackCount = [NSNumber numberWithInt:0];
+        [ProgressHUD dismiss];
+        [self.videoCamera start];
+    } else {
+        [ProgressHUD dismiss];
+        if (self.globalProperty) {
+            [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
     //set state to stop
 }

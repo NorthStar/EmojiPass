@@ -32,6 +32,8 @@
 		5471E0291A05856300A894BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0281A05856300A894BE /* QuartzCore.framework */; };
 		5471E02B1A05856A00A894BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02A1A05856A00A894BE /* UIKit.framework */; };
 		5471E02D1A05857100A894BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02C1A05857100A894BE /* Foundation.framework */; };
+		549F92A41A066B0100F470F9 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 549F92A11A066B0100F470F9 /* ProgressHUD.bundle */; };
+		549F92A51A066B0100F470F9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 549F92A31A066B0100F470F9 /* ProgressHUD.m */; };
 		9A09D7725575EDE7220ADCA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B568C266C049D2F9FBB1F393 /* libPods.a */; };
 		D0049B811A05B34F00AFF1E6 /* MercuryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0049B801A05B34F00AFF1E6 /* MercuryClient.m */; };
 		D0049B841A05E17900AFF1E6 /* CreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0049B831A05E17900AFF1E6 /* CreditCardViewController.m */; };
@@ -87,6 +89,9 @@
 		5471E02A1A05856A00A894BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5471E02C1A05857100A894BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		547F191304C07C59659F1B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		549F92A11A066B0100F470F9 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		549F92A21A066B0100F470F9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		549F92A31A066B0100F470F9 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		B0E05438D28C24268E02676E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B568C266C049D2F9FBB1F393 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryClient.h; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 		5471DFDC1A055C4F00A894BE = {
 			isa = PBXGroup;
 			children = (
+				549F92A01A066B0100F470F9 /* ProgressHUD */,
 				5471E0111A055F6500A894BE /* opencv2.framework */,
 				5471E02C1A05857100A894BE /* Foundation.framework */,
 				5471E02A1A05856A00A894BE /* UIKit.framework */,
@@ -233,6 +239,16 @@
 				5471E0061A055C5000A894BE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		549F92A01A066B0100F470F9 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				549F92A11A066B0100F470F9 /* ProgressHUD.bundle */,
+				549F92A21A066B0100F470F9 /* ProgressHUD.h */,
+				549F92A31A066B0100F470F9 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 		9326E4F175DB987372FCE50D /* Pods */ = {
@@ -326,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549F92A41A066B0100F470F9 /* ProgressHUD.bundle in Resources */,
 				5471DFF71A055C4F00A894BE /* Main.storyboard in Resources */,
 				D0049B8B1A06416F00AFF1E6 /* background.png in Resources */,
 				5471DFFC1A055C4F00A894BE /* LaunchScreen.xib in Resources */,
@@ -383,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549F92A51A066B0100F470F9 /* ProgressHUD.m in Sources */,
 				D0049B811A05B34F00AFF1E6 /* MercuryClient.m in Sources */,
 				5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */,
 				D0049B871A06273300AFF1E6 /* CalibrateViewController.m in Sources */,
