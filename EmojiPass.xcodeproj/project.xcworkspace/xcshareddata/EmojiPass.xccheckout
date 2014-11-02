@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3D068DC6-0064-4C58-8033-F4AB559E65C0</string>
+	<string>94919C2B-B0B4-4BBA-BE27-DB85E49F78BC</string>
 	<key>IDESourceControlProjectName</key>
 	<string>EmojiPass</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>21C011E4457EEE86CCF3DB49098BFFACEDFF3ED8</key>
-		<string>https://github.com/NorthStar/EmojiPass.git</string>
+		<string>github.com:NorthStar/EmojiPass.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>EmojiPass.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/NorthStar/EmojiPass.git</string>
+	<string>github.com:NorthStar/EmojiPass.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545E186B1A05D2C20069FC67 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186A1A05D2C20069FC67 /* libicucore.dylib */; };
+		545E186D1A05D2CC0069FC67 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186C1A05D2CC0069FC67 /* libc++.dylib */; };
+		545E186F1A05D2D80069FC67 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186E1A05D2D80069FC67 /* CFNetwork.framework */; };
+		545E18711A05D2F00069FC67 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E18701A05D2F00069FC67 /* Security.framework */; };
+		545E18731A05D2F90069FC67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E18721A05D2F90069FC67 /* SystemConfiguration.framework */; };
 		5471DFEB1A055C4F00A894BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFEA1A055C4F00A894BE /* main.m */; };
 		5471DFEE1A055C4F00A894BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFED1A055C4F00A894BE /* AppDelegate.m */; };
 		5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		545E186A1A05D2C20069FC67 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		545E186C1A05D2CC0069FC67 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		545E186E1A05D2D80069FC67 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		545E18701A05D2F00069FC67 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		545E18721A05D2F90069FC67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5471DFE51A055C4F00A894BE /* EmojiPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5471DFE91A055C4F00A894BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5471DFEA1A055C4F00A894BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +92,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545E18731A05D2F90069FC67 /* SystemConfiguration.framework in Frameworks */,
+				545E18711A05D2F00069FC67 /* Security.framework in Frameworks */,
+				545E186F1A05D2D80069FC67 /* CFNetwork.framework in Frameworks */,
+				545E186D1A05D2CC0069FC67 /* libc++.dylib in Frameworks */,
+				545E186B1A05D2C20069FC67 /* libicucore.dylib in Frameworks */,
 				5471E0121A055F6500A894BE /* opencv2.framework in Frameworks */,
 				5471E01B1A05851B00A894BE /* Accelerate.framework in Frameworks */,
 				5471E01D1A05852300A894BE /* AssetsLibrary.framework in Frameworks */,
@@ -110,6 +125,11 @@
 		2893CEA6421F78BAD3E33AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				545E18721A05D2F90069FC67 /* SystemConfiguration.framework */,
+				545E18701A05D2F00069FC67 /* Security.framework */,
+				545E186E1A05D2D80069FC67 /* CFNetwork.framework */,
+				545E186C1A05D2CC0069FC67 /* libc++.dylib */,
+				545E186A1A05D2C20069FC67 /* libicucore.dylib */,
 				B568C266C049D2F9FBB1F393 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -467,7 +487,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EmojiPass",
 				);
-				GCC_PREFIX_HEADER = /Users/jhalko/projects/EmojiPass/EmojiPass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -484,7 +504,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/EmojiPass",
 				);
-				GCC_PREFIX_HEADER = /Users/jhalko/projects/EmojiPass/EmojiPass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
