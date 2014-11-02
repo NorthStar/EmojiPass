@@ -28,6 +28,7 @@
     
     self.payButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 250, insetBounds.size.width, 100)];
     self.payButton.backgroundColor = [UIColor blueColor];
+    
     [self.payButton setTitle:@"PAY" forState:UIControlStateNormal];
     
     

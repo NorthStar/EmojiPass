@@ -11,6 +11,8 @@
 #import <UNIRest.h>
 #import <Firebase/Firebase.h>
 #import "AFHTTPRequestOperationManager.h"
+#import <FontAwesome-iOS/NSString+FontAwesome.h>
+#import <QuartzCore/QuartzCore.h>
 
 using namespace cv;
 @interface CameraProcessingViewController: UIViewController<CvVideoCameraDelegate>// ()
@@ -22,6 +24,8 @@ using namespace cv;
 @property (nonatomic, strong) NSString *parseJsId;
 @property (nonatomic, strong) NSNumber *count;
 @property (nonatomic, strong) NSNumber *callBackCount;
+
+@property (nonatomic, strong) UILabel *iconLabel;//for icons
 
 @property (nonatomic, strong) NSMutableDictionary *globalProperty;
 
@@ -39,13 +43,21 @@ using namespace cv;
     
     //initialize the global property
     self.globalProperty = nil;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     //Add the imageview
     CGRect bounds = self.view.bounds;
     self.imageView = [[UIImageView alloc]
                       initWithFrame:CGRectMake(bounds.origin.x + 10 , bounds.origin.y, 288, 352)];
-    [self.imageView setBackgroundColor:[UIColor blueColor]];
     [self.view addSubview:self.imageView];
+    
+    //Icon Label
+    self.iconLabel = [[UILabel alloc] initWithFrame:CGRectMake(bounds.origin.x + 130 , bounds.origin.y + 370, 44, 44)];
+    self.iconLabel.font = [UIFont fontWithName:@"FontAwesome" size:48];
+    self.iconLabel.text =  [NSString awesomeIcon:FaSpinner];
+    [self.iconLabel setTextColor:[UIColor grayColor]];
+    [self.view addSubview:self.iconLabel];
+    
     
     //video camera
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
@@ -68,6 +80,10 @@ using namespace cv;
 #ifdef __cplusplus
 - (void)processImage:(Mat&)image;
 {
+    self.count = [NSNumber numberWithInt:[self.count intValue] + 1];
+    if ([self.count intValue] < 20) {
+        return;
+    }
     // Do some OpenCV stuff with the image
     Mat image_copy;
     cvtColor(image, image_copy, COLOR_BGR2GRAY);
@@ -87,8 +103,6 @@ using namespace cv;
 
 -(UIImage *)UIImageFromCVMat:(cv::Mat)cvMat
 {
-    self.count = [NSNumber numberWithInt:[self.count intValue] + 1];
-    
     NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
     CGColorSpaceRef colorSpace;
     
@@ -129,8 +143,8 @@ using namespace cv;
 
 - (void)postFaceToAmazon: (UIImage *)image {
     
-    if ([self.count intValue] >= 30) {
-        [self stopTaping];
+    if ([self.count intValue] >= 50) {
+        [self stopTapingForSmiles];
     }
     __block NSNumber *countCopy = self.count;
 
@@ -214,9 +228,16 @@ using namespace cv;
     }
 }
 
+- (void)stopTapingForSmiles {
+    [self.videoCamera stop];
+    self.iconLabel.font = [UIFont fontWithName:@"Ariel" size:48];
+    [self.iconLabel setText:@"Prepping for :P"];
+}
 - (void)stopTaping {
     [self.videoCamera stop];
     self.count = [NSNumber numberWithInt:0];
+    self.iconLabel.font = [UIFont fontWithName:@"Ariel" size:48];
+    [self.iconLabel setText:@":P"];
 }
 - (void)stopProcessing {
     if (self.globalProperty) {
