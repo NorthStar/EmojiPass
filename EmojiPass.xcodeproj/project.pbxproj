@@ -27,6 +27,8 @@
 		5471E0291A05856300A894BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E0281A05856300A894BE /* QuartzCore.framework */; };
 		5471E02B1A05856A00A894BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02A1A05856A00A894BE /* UIKit.framework */; };
 		5471E02D1A05857100A894BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5471E02C1A05857100A894BE /* Foundation.framework */; };
+		9A09D7725575EDE7220ADCA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B568C266C049D2F9FBB1F393 /* libPods.a */; };
+		D0049B811A05B34F00AFF1E6 /* MercuryClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D0049B801A05B34F00AFF1E6 /* MercuryClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,11 @@
 		5471E0281A05856300A894BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5471E02A1A05856A00A894BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5471E02C1A05857100A894BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		547F191304C07C59659F1B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0E05438D28C24268E02676E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B568C266C049D2F9FBB1F393 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryClient.h; sourceTree = "<group>"; };
+		D0049B801A05B34F00AFF1E6 /* MercuryClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,7 @@
 				5471E0291A05856300A894BE /* QuartzCore.framework in Frameworks */,
 				5471E02B1A05856A00A894BE /* UIKit.framework in Frameworks */,
 				5471E02D1A05857100A894BE /* Foundation.framework in Frameworks */,
+				9A09D7725575EDE7220ADCA4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2893CEA6421F78BAD3E33AC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B568C266C049D2F9FBB1F393 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5471DFDC1A055C4F00A894BE = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +132,8 @@
 				5471DFE71A055C4F00A894BE /* EmojiPass */,
 				5471E0041A055C5000A894BE /* EmojiPassTests */,
 				5471DFE61A055C4F00A894BE /* Products */,
+				9326E4F175DB987372FCE50D /* Pods */,
+				2893CEA6421F78BAD3E33AC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +160,8 @@
 				5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */,
 				5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */,
 				5471DFE81A055C4F00A894BE /* Supporting Files */,
+				D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */,
+				D0049B801A05B34F00AFF1E6 /* MercuryClient.m */,
 			);
 			path = EmojiPass;
 			sourceTree = "<group>";
@@ -173,6 +193,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9326E4F175DB987372FCE50D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0E05438D28C24268E02676E /* Pods.debug.xcconfig */,
+				547F191304C07C59659F1B48 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -180,9 +209,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5471E00B1A055C5000A894BE /* Build configuration list for PBXNativeTarget "EmojiPass" */;
 			buildPhases = (
+				D25ACB279250F4C9FA7B1164 /* Check Pods Manifest.lock */,
 				5471DFE11A055C4F00A894BE /* Sources */,
 				5471DFE21A055C4F00A894BE /* Frameworks */,
 				5471DFE31A055C4F00A894BE /* Resources */,
+				C17B2BBCA281E42B978C11A9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,11 +299,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C17B2BBCA281E42B978C11A9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D25ACB279250F4C9FA7B1164 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5471DFE11A055C4F00A894BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0049B811A05B34F00AFF1E6 /* MercuryClient.m in Sources */,
 				5471DFF11A055C4F00A894BE /* EmojiPass.xcdatamodeld in Sources */,
 				5471E0191A0574D200A894BE /* CameraProcessingViewController.mm in Sources */,
 				5471DFEE1A055C4F00A894BE /* AppDelegate.m in Sources */,
@@ -348,7 +413,6 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -383,7 +447,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -397,13 +460,14 @@
 		};
 		5471E00C1A055C5000A894BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0E05438D28C24268E02676E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EmojiPass",
 				);
-				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/jhalko/projects/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -413,13 +477,14 @@
 		};
 		5471E00D1A055C5000A894BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 547F191304C07C59659F1B48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/EmojiPass",
 				);
-				GCC_PREFIX_HEADER = /Users/mimeexu/Desktop/EmojiPass/EmojiPass/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/jhalko/projects/EmojiPass/EmojiPass/PrefixHeader.pch;
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
