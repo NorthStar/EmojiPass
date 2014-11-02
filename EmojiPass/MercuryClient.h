@@ -16,5 +16,8 @@
 - (void)processPaymentAmount:(float)amount
                  withSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-    
+
+- (void)setupCreditCard:(NSInteger)cardNumber andExpDate:(NSInteger)expDate
+            withSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

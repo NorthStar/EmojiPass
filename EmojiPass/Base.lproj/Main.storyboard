@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Emoji Pass-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Emoji Pass" id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -18,9 +18,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" alpha="0.64999999999999969" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-dr-MVb">
-                                <rect key="frame" x="0.0" y="175" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="175" width="600" height="100"/>
                                 <color key="backgroundColor" red="0.66415029764175415" green="0.6642688512802124" blue="0.66415953636169434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="26"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Setup">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,7 +33,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="BnO-dr-MVb" secondAttribute="centerX" id="Iun-1x-XDz"/>
+                            <constraint firstItem="BnO-dr-MVb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0H3-20-cKp"/>
+                            <constraint firstAttribute="trailing" secondItem="BnO-dr-MVb" secondAttribute="trailing" id="B4i-cY-IEi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aGh-G9-W03"/>
@@ -53,12 +55,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234 5678 9101 2345" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaX-gf-CQ4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5499990123456781" borderStyle="roundedRect" placeholder="1234 5678 9101 2345" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="AaX-gf-CQ4">
                                 <rect key="frame" x="46" y="114" width="249" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHZ-Kq-RQs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="FHZ-Kq-RQs">
                                 <rect key="frame" x="46" y="190" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2LW-02-Azb"/>
@@ -66,7 +68,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aRd-tl-3hO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="aRd-tl-3hO">
                                 <rect key="frame" x="195" y="190" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="OP5-FM-16w"/>
@@ -109,34 +111,17 @@
                     <view key="view" contentMode="scaleToFill" id="wyp-bI-w6i" customClass="Ca">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture Facial Regonition Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2y-JJ-Ijg">
-                                <rect key="frame" x="180" y="113" width="240" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="DQy-fW-7Ex"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="I2y-JJ-Ijg" firstAttribute="top" secondItem="CNl-Su-YcB" secondAttribute="bottom" constant="93" id="aaY-Hf-vvZ"/>
-                            <constraint firstAttribute="centerX" secondItem="I2y-JJ-Ijg" secondAttribute="centerX" id="uuc-9Q-7ko"/>
-                            <constraint firstItem="whg-rB-nu0" firstAttribute="top" secondItem="I2y-JJ-Ijg" secondAttribute="bottom" constant="466" id="zuR-8C-X35"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uh5-PK-Gxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1619" y="1496"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Emoji Pass-->
         <scene sceneID="9P9-Vf-tYk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wCZ-Je-P7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p9v-UH-f0U" sceneMemberID="viewController">
+                <navigationController title="Emoji Pass" automaticallyAdjustsScrollViewInsets="NO" id="p9v-UH-f0U" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fdc-Gc-ylt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -147,6 +132,7 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="eQU-1M-b5U"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCZ-Je-P7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="195" y="797"/>
         </scene>

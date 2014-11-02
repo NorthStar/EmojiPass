@@ -35,8 +35,7 @@
     NSMutableDictionary *parameters =
     [NSMutableDictionary dictionaryWithDictionary:@{
                                                     @"InvoiceNo":@"1",
-                                                    @"RefNo":@"1",
-                                                    @"Memo":@"emojipass Money2020",
+                                                    @"Memo":@"Emoji Pass Money2020",
                                                     @"Purchase":[NSString stringWithFormat:@"%0.2f",amount],
                                                     @"Frequency":@"OneTime",
                                                     @"RecordNo":@"OdDOgYVlrkVeir9/q9lDtjinQwZ7rUsh8tua5x1YYSMiEgUQCSIQCI1B",
@@ -45,6 +44,37 @@
     ];
     
     [manager POST:@"https://w1.mercurycert.net/PaymentsAPI/credit/salebyrecordno" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation, responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(failure, error);
+    }];
+}
+
+- (void)setupCreditCard:(NSString*)cardNumber andExpDate:(NSString*)expDate
+                 withSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"Basic MDIzMzU4MTUwNTExNjY2Onh5eg==" forHTTPHeaderField:@"Authorization"];
+    
+    NSMutableDictionary *parameters =
+    [NSMutableDictionary dictionaryWithDictionary:@{
+                                                    @"InvoiceNo":@"1",
+                                                    @"Memo":@"Emoji Pass Money2020",
+                                                    @"Purchase":@"1.00",
+                                                    @"Frequency":@"OneTime",
+                                                    @"RecordNo":@"RecordNumberRequested",
+                                                    @"AccountSource":@"Keyed",
+                                                    @"OperatorID":@"EmojiPassMoney2020",
+                                                    @"AcctNo":cardNumber,
+                                                    @"ExpDate":expDate
+                                                    }
+     ];
+    
+    [manager POST:@"https://w1.mercurycert.net/PaymentsAPI/credit/zeroauth" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(operation, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(failure, error);

@@ -12,9 +12,6 @@
 
 @interface ViewController : UIViewController
 
-
-
-
 @property (nonatomic, strong) CameraProcessingViewController *cameraProcessingViewController;
 
 @end
