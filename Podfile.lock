@@ -154,7 +154,6 @@ PODS:
     - XMLDictionary (~> 1.4.0)
   - Bolts (1.1.3)
   - Firebase (1.2.3)
-  - FontAwesome-iOS (0.0.4)
   - GZIP (1.0.3)
   - Mantle (1.4.1):
     - Mantle/extobjc
@@ -170,7 +169,6 @@ DEPENDENCIES:
   - AWSCognitoSync
   - AWSiOSSDKv2
   - Firebase (>= 1.2.3)
-  - FontAwesome-iOS
   - Unirest (~> 1.1.3)
 
 SPEC CHECKSUMS:
@@ -179,7 +177,6 @@ SPEC CHECKSUMS:
   AWSiOSSDKv2: da3f88b7dd49ec12d918eb7c94bb4df5303374ee
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Firebase: b396753207f45235159be6703fbf059e5cf72536
-  FontAwesome-iOS: 0c39b9f5d4687d36cf8958f61295c2b7960a7308
   GZIP: f27c434ffee5e9a9b34f4e9c19e91350fa8bbde1
   Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7

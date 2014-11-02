@@ -11,7 +11,6 @@
 #import <UNIRest.h>
 #import <Firebase/Firebase.h>
 #import "AFHTTPRequestOperationManager.h"
-#import <FontAwesome-iOS/NSString+FontAwesome.h>
 #import <QuartzCore/QuartzCore.h>
 
 using namespace cv;
@@ -53,8 +52,8 @@ using namespace cv;
     
     //Icon Label
     self.iconLabel = [[UILabel alloc] initWithFrame:CGRectMake(bounds.origin.x + 130 , bounds.origin.y + 370, 44, 44)];
-    self.iconLabel.font = [UIFont fontWithName:@"FontAwesome" size:48];
-    self.iconLabel.text =  [NSString awesomeIcon:FaSpinner];
+    self.iconLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:48];
+    //self.iconLabel.text =  [NSString awesomeIcon:FaSpinner];
     [self.iconLabel setTextColor:[UIColor grayColor]];
     [self.view addSubview:self.iconLabel];
     
