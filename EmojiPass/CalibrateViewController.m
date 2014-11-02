@@ -7,17 +7,23 @@
 //
 
 #import "CalibrateViewController.h"
+#import "AppDelegate.h"
 
 @interface CalibrateViewController ()
 
 @property (strong, nonatomic, readwrite) UIButton *calibrateButton;
+@property (strong, nonatomic, readwrite) NSMutableDictionary *faceValue;
 
 @end
 
 @implementation CalibrateViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.jpg"]];
     bgImageView.frame = self.view.bounds;
@@ -46,6 +52,16 @@
     //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
     if ([keyPath isEqualToString:@"masterProperty"]) {
         NSLog(@"camera processing view controller state: %@", change);
+        
+        if ([[object currentString] isEqualToString:@"!_!"]) {
+            
+            self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
+            
+            @try {
+                [object removeObserver:self forKeyPath:@"masterProperty"];
+            }
+            @catch (NSException * __unused exception) {}
+        }
     }
     //}
 }

@@ -318,6 +318,10 @@ using namespace cv;
     //set state to stop
 }
 
+- (void)didFinish {
+    
+}
+
 
 - (void)compare: (NSMutableDictionary *)left with: (NSMutableDictionary *)right{
     return;

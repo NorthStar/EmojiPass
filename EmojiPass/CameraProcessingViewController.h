@@ -11,5 +11,6 @@
 @interface CameraProcessingViewController : UIViewController//<CvVideoCameraDelegate>
 
 @property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSString *currentString;//keep track of what emoticons are currently being set
 
 @end

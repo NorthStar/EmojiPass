@@ -7,11 +7,13 @@
 //
 #import "ViewController.h"
 #import "MercuryClient.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic, readwrite) UIButton *calibrateButton;
 @property (strong, nonatomic, readwrite) UIButton *payButton;
+@property (strong, nonatomic, readwrite) NSMutableDictionary *faceValue;
 
 @end
 
@@ -19,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.faceValue = [(AppDelegate *)[[UIApplication sharedApplication] delegate] faceValue];
+    
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.jpg"]];
     bgImageView.frame = self.view.bounds;
@@ -46,14 +51,67 @@
     [self.view addSubview:self.payButton];
 }
 
-
-
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
         if ([keyPath isEqualToString:@"masterProperty"]) {
             NSLog(@"camera processing view controller state: %@", change);
+            
+            if ([[object currentString] isEqualToString:@"!_!"]) {
+                
+//                self.faceValue = [NSMutableDictionary dictionaryWithDictionary:change];
+                if ([self compare:self.faceValue with:[NSMutableDictionary dictionaryWithDictionary:change]]) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                                    message:@"Success"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil
+                                          ];
+                    [alert show];
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                                    message:@"Failure"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil
+                                          ];
+                    [alert show];
+                }
+                
+                @try {
+                    [object removeObserver:self forKeyPath:@"masterProperty"];
+                }
+                @catch (NSException * __unused exception) {}
+            }
         }
     //}
+}
+
+- (BOOL)compare: (NSMutableDictionary *)left with: (NSMutableDictionary *)right{
+    
+    for (NSString *key in @[@":-)",@";-P",@":-D"]) {
+        NSDictionary *leftD = [left objectForKey:key];
+        NSDictionary *rightD = [right objectForKey:key];
+        if (![[leftD objectForKey:@"gender"] isEqualToString:[rightD objectForKey:@"gender"]]) {
+            //say failure here
+            return NO;
+        }
+        
+        if (![[leftD objectForKey:@"race"] isEqualToString:[rightD objectForKey:@"race"]]) {
+            //say failure here
+            return NO;
+        }
+      /*
+        if (![[leftD objectForKey:@"position"] isEqualToString:[rightD objectForKey:@"gender"]]) {
+            //say failure here
+            return;
+        }*/
+        
+        //say success
+        
+        
+    }
+    
+    return YES;
 }
 
 #pragma mark - Button Actions
