@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EmojiPass/CameraProcessingViewController.mm"
-            timestampString = "436576396.295047"
+            timestampString = "436581115.962908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-processImage:"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-processFace:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
