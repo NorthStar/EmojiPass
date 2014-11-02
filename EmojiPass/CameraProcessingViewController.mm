@@ -159,10 +159,8 @@ using namespace cv;
 
 
 - (void)postFaceToAmazon: (UIImage *)image {
-    if ([self.count intValue]%2 == 0) {
-        return;
-    }
-    if ([self.count intValue] >= 160) {
+
+    if ([self.count intValue] >= 80) {
         [self stopTapingForSmiles];
         return;
     }
@@ -198,32 +196,9 @@ using namespace cv;
     
     /* if I need the end result, do:*/
     //UNIUrlConnection *asyncConnection =
-    
+    /*
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        //Call your function or whatever work that needs to be done
-        //Code in this part is run on a background thread
-        [[UNIRest get:^(UNISimpleRequest *request) {
-            [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
-            [request setHeaders:headers];
-        }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
-            
-            /* If I need the rest of the return */
-            //NSInteger code = response.code;
-            //NSDictionary *responseHeaders = response.headers;
-            //UNIJsonNode *body = response.body;
-            
-            if (error) {
-                return;
-            }
-            NSData *rawBody = response.rawBody;
-            NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
-            NSLog(@"%@", tideData);
-            self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
-            
-            [self saveFacialFeature:tideData];
-        }];
-
         
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             
@@ -232,7 +207,30 @@ using namespace cv;
             
             
         });
-    });
+    });*/
+    //Call your function or whatever work that needs to be done
+    //Code in this part is run on a background thread
+    [[UNIRest get:^(UNISimpleRequest *request) {
+        [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
+        [request setHeaders:headers];
+    }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+        
+        /* If I need the rest of the return */
+        //NSInteger code = response.code;
+        //NSDictionary *responseHeaders = response.headers;
+        //UNIJsonNode *body = response.body;
+        
+        if (error) {
+            return;
+        }
+        NSData *rawBody = response.rawBody;
+        NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
+        NSLog(@"%@", tideData);
+        self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
+        
+        [self saveFacialFeature:tideData];
+    }];
+
 }
 
 //Problem: the emoticon and the analysis are not yet associated
@@ -262,6 +260,8 @@ using namespace cv;
 }
 
 - (void)stopTapingForSmiles {
+    [self.videoCamera stop];
+    
     if ([self.currentString isEqualToString:@":)"]) {
         self.currentString = @";-P";
         [self.textLabel removeFromSuperview];
@@ -275,42 +275,35 @@ using namespace cv;
         self.currentString = @"!_!";
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.emoticonLabel setText:self.currentString];
-    });
-    
-    [self.videoCamera stop];
  /*   [self.view layoutIfNeeded];
     [self.view bringSubviewToFront:self.imageView];*/
     
     if (![self.currentString isEqualToString:@"!_!"]) {
+/*
         dispatch_async(dispatch_get_main_queue(), ^{
             [ProgressHUD show:@"Please wait..."];
-        });
-        self.count = [NSNumber numberWithInt:30];
+        });*/
+        self.count = [NSNumber numberWithInt:0];
     } else {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [ProgressHUD show:@"Please wait..."];
-        });
+/*        [ProgressHUD show:@"About done..."];*/
+/*        dispatch_async(dispatch_get_main_queue(), ^{
+            [ProgressHUD show:@"About done..."];
+        });*/
+        
+        //at least make all views disppear
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
-- (void)stopTaping {
-    [self.videoCamera stop];
-    self.count = [NSNumber numberWithInt:0];
-    self.emoticonLabel.font = [UIFont fontWithName:@"Ariel" size:48];
-    [self.emoticonLabel setText:@":P"];
-}
 - (void)stopProcessing {
+/*    [ProgressHUD dismiss];*/
+    
     if (![self.currentString isEqualToString:@":-D"]) {
-        self.callBackCount = [NSNumber numberWithInt:0];
-        [ProgressHUD dismiss];
+        self.callBackCount = [NSNumber numberWithInt:50];
         [self.videoCamera start];
     } else {
-        [ProgressHUD dismiss];
         if (self.globalProperty) {
             [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
-            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }
     //set state to stop
