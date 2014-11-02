@@ -121,18 +121,25 @@ using namespace cv;
 
 - (void)postFaceToAmazon: (UIImage *)image {
     __block NSNumber *countCopy = self.count;
-    
-//    NSData *imageData = UIImagePNGRepresentation(image);
+
+    /*  UIImagePNGRep instead of JPEG */
+    //NSData *imageData = UIImagePNGRepresentation(image);
     
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"key":[NSString stringWithFormat:@"images/%d", [countCopy intValue]]};
-    NSString *baseUrl = @"http://emojiface.s3.amazonaws.com";//@"http%3A%2F%2Femojiface.s3.amazonaws.com";
-    //NSString *urlToPost = [NSString stringWithFormat:@"%@/%d", baseUrl, [countCopy intValue]];
+    NSString *baseUrl = @"http://emojiface.s3.amazonaws.com";
+    
+    
     [manager POST:baseUrl parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFormData:imageData name:@"file"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
         NSLog(@"Success: %@", responseObject);
+        
+        NSString *formattedUrl = @"http%3A%2F%2Femojiface.s3.amazonaws.com%2Fimages%2F";
+        [self recognizeFaceWithUrl:[NSString stringWithFormat:@"%@%d", formattedUrl, [countCopy intValue]]];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -142,14 +149,20 @@ using namespace cv;
 - (void)recognizeFaceWithUrl: (NSString *)postedUrl {
     NSDictionary *headers = @{@"X-Mashape-Key": @"E7mL64BZoXmshpCluDPrZdPVW573p1TJ8KrjsnPQn0QzDxADxF"};
     NSString *urlString = @"https://faceplusplus-faceplusplus.p.mashape.com/detection/detect?attribute=glass%2Cpose%2Cgender%2Cage%2Crace%2Csmiling&url=";
-    UNIUrlConnection *asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
+    
+    /* if I need the end result, do:*/
+    //UNIUrlConnection *asyncConnection =
+    
+    [[UNIRest get:^(UNISimpleRequest *request) {
         [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
         [request setHeaders:headers];
     }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
         
+        /* If I need the rest of the return */
         //NSInteger code = response.code;
         //NSDictionary *responseHeaders = response.headers;
         //UNIJsonNode *body = response.body;
+        
         if (error) {
             return;
         }
