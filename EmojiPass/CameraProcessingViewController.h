@@ -10,4 +10,6 @@
 
 @interface CameraProcessingViewController : UIViewController//<CvVideoCameraDelegate>
 
+@property (nonatomic, strong) NSString *state;
+
 @end

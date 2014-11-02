@@ -31,6 +31,7 @@ using namespace cv;
 @property (nonatomic, strong) NSMutableDictionary *masterProperty;
 @property (nonatomic, strong) NSMutableDictionary *globalProperty;
 
+
 @end
 
 @implementation CameraProcessingViewController

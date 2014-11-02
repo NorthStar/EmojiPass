@@ -55,6 +55,7 @@
 }
 - (void)payButtonPressed {
     CameraProcessingViewController *payCamera = [[CameraProcessingViewController alloc] init];
+    [payCamera setState:@"verify"];
     [self presentViewController:payCamera animated:YES completion:nil];
     return;
 }

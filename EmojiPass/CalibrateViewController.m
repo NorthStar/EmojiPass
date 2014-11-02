@@ -44,6 +44,7 @@
 
 - (void)calibrateButtonPressed {
     CameraProcessingViewController *calibrateCamera = [[CameraProcessingViewController alloc] init];
+    [calibrateCamera setState:@"calibrate"];
     [self presentViewController:calibrateCamera animated:YES completion:nil];
     
     return;
