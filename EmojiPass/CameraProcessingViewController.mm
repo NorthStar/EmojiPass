@@ -24,8 +24,11 @@ using namespace cv;
 @property (nonatomic, strong) NSNumber *count;
 @property (nonatomic, strong) NSNumber *callBackCount;
 
-@property (nonatomic, strong) UILabel *iconLabel;//for icons
+@property (nonatomic, strong) UILabel *emoticonLabel;//for icons
+@property (nonatomic, strong) UILabel *textLabel;//for text, duh
+@property (nonatomic, strong) NSString *currentString;//keep track of what emoticons are currently being set
 
+@property (nonatomic, strong) NSMutableDictionary *masterProperty;
 @property (nonatomic, strong) NSMutableDictionary *globalProperty;
 
 @end
@@ -41,7 +44,13 @@ using namespace cv;
     // Do any additional setup after loading the view, typically from a nib.
     
     //initialize the global property
-    self.globalProperty = nil;
+    self.globalProperty = [NSMutableDictionary dictionary];
+    self.masterProperty = [NSMutableDictionary dictionaryWithDictionary:
+                           @{@":-)":@{},
+                             @";-P":@{},
+                             @":-D":@{}}];
+    
+    self.currentString = @":)";
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     //Add the imageview
@@ -50,12 +59,19 @@ using namespace cv;
                       initWithFrame:CGRectMake(bounds.origin.x + 10 , bounds.origin.y, 288, 352)];
     [self.view addSubview:self.imageView];
     
-    //Icon Label
-    self.iconLabel = [[UILabel alloc] initWithFrame:CGRectMake(bounds.origin.x + 130 , bounds.origin.y + 370, 44, 44)];
-    self.iconLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:48];
-    //self.iconLabel.text =  [NSString awesomeIcon:FaSpinner];
-    [self.iconLabel setTextColor:[UIColor grayColor]];
-    [self.view addSubview:self.iconLabel];
+    //Emoticon Label
+    self.emoticonLabel = [[UILabel alloc] initWithFrame:CGRectMake(bounds.origin.x + 250 , bounds.origin.y + 400, 44, 44)];
+    self.emoticonLabel.font = [UIFont fontWithName:@"Ariel" size:48];
+    self.emoticonLabel.text =  self.currentString;
+    [self.emoticonLabel setTextColor:[UIColor grayColor]];
+    [self.view addSubview:self.emoticonLabel];
+    //Text Label
+    self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(bounds.origin.x + 44 , bounds.origin.y + 400, 200, 44)];
+    self.textLabel.font = [UIFont fontWithName:@"Ariel" size:58];
+    self.textLabel.text =  @"Prepping for...";
+    [self.textLabel setTextColor:[UIColor grayColor]];
+    [self.view addSubview:self.textLabel];
+
     
     
     //video camera
@@ -80,21 +96,21 @@ using namespace cv;
 - (void)processImage:(Mat&)image;
 {
     self.count = [NSNumber numberWithInt:[self.count intValue] + 1];
-    if ([self.count intValue] < 20) {
-        return;
-    }
+    
     // Do some OpenCV stuff with the image
     Mat image_copy;
     cvtColor(image, image_copy, COLOR_BGR2GRAY);
-    
-    // invert image
-   // bitwise_not(image_copy, image_copy);
-    
-    //Convert BGR to BGRA (three channel to four channel)
-    Mat bgr;
-    cvtColor(image_copy, bgr, COLOR_GRAY2BGR);
-    
-    cvtColor(bgr, image, COLOR_BGR2BGRA);
+    if ([self.count intValue] < 50) {
+        // invert image
+        // bitwise_not(image_copy, image_copy);
+        
+        //Convert BGR to BGRA (three channel to four channel)
+        Mat bgr;
+        cvtColor(image_copy, bgr, COLOR_GRAY2BGR);
+        
+        cvtColor(bgr, image, COLOR_BGR2BGRA);
+        return;
+    }
     
     [self postFaceToAmazon:[self UIImageFromCVMat:image_copy]];
     return;
@@ -142,8 +158,9 @@ using namespace cv;
 
 - (void)postFaceToAmazon: (UIImage *)image {
     
-    if ([self.count intValue] >= 50) {
+    if ([self.count intValue] >= 80) {
         [self stopTapingForSmiles];
+        return;
     }
     __block NSNumber *countCopy = self.count;
 
@@ -178,26 +195,39 @@ using namespace cv;
     /* if I need the end result, do:*/
     //UNIUrlConnection *asyncConnection =
     
-    [[UNIRest get:^(UNISimpleRequest *request) {
-        [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
-        [request setHeaders:headers];
-    }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        /* If I need the rest of the return */
-        //NSInteger code = response.code;
-        //NSDictionary *responseHeaders = response.headers;
-        //UNIJsonNode *body = response.body;
+        //Call your function or whatever work that needs to be done
+        //Code in this part is run on a background thread
         
-        if (error) {
-            return;
-        }
-        NSData *rawBody = response.rawBody;
-        NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
-        NSLog(@"%@", tideData);
-        self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
-        
-        [self saveFacialFeature:tideData];
-    }];
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            
+            //Stop your activity indicator or anything else with the GUI
+            //Code here is run on the main thread
+            
+            [[UNIRest get:^(UNISimpleRequest *request) {
+                [request setUrl:[NSString stringWithFormat:@"%@%@", urlString, postedUrl]];
+                [request setHeaders:headers];
+            }] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+                
+                /* If I need the rest of the return */
+                //NSInteger code = response.code;
+                //NSDictionary *responseHeaders = response.headers;
+                //UNIJsonNode *body = response.body;
+                
+                if (error) {
+                    return;
+                }
+                NSData *rawBody = response.rawBody;
+                NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
+                NSLog(@"%@", tideData);
+                self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
+                
+                [self saveFacialFeature:tideData];
+            }];
+            
+        });
+    });
 }
 
 
@@ -228,22 +258,40 @@ using namespace cv;
 }
 
 - (void)stopTapingForSmiles {
+    if ([self.currentString isEqualToString:@":)"]) {
+        self.currentString = @";-P";
+    }
+    //(important to say else here)
+    else if ([self.currentString isEqualToString:@";-P"]) {
+        self.currentString = @":-D";
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.emoticonLabel setText:self.currentString];
+    });
+    
     [self.videoCamera stop];
-    self.iconLabel.font = [UIFont fontWithName:@"Ariel" size:48];
-    [self.iconLabel setText:@"Prepping for :P"];
+    [self.view layoutIfNeeded];
+    [self.view bringSubviewToFront:self.imageView];
+    
+    if (![self.currentString isEqualToString:@":-D"]) {
+        self.count = [NSNumber numberWithInt:30];
+        [self.videoCamera start];
+    }
 }
+
 - (void)stopTaping {
     [self.videoCamera stop];
     self.count = [NSNumber numberWithInt:0];
-    self.iconLabel.font = [UIFont fontWithName:@"Ariel" size:48];
-    [self.iconLabel setText:@":P"];
+    self.emoticonLabel.font = [UIFont fontWithName:@"Ariel" size:48];
+    [self.emoticonLabel setText:@":P"];
 }
 - (void)stopProcessing {
     if (self.globalProperty) {
+        [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     //set state to stop
-    
 }
 
 
