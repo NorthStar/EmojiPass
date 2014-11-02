@@ -301,11 +301,12 @@ using namespace cv;
         self.callBackCount = [NSNumber numberWithInt:50];
 //        [self.videoCamera start];
     } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
         if (self.globalProperty) {
             if ([self.state isEqualToString:@"calibrate"]) {
                 [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+                if ([self.currentString isEqualToString:@"!_!"]) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
             } else {
                     //compare stuff
                     if ([self.currentString isEqualToString:@"!_!"]) {
