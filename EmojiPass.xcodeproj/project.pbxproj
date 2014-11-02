@@ -155,13 +155,13 @@
 				5471DFF31A055C4F00A894BE /* ViewController.m */,
 				5471E0171A0574D200A894BE /* CameraProcessingViewController.h */,
 				5471E0181A0574D200A894BE /* CameraProcessingViewController.mm */,
+				D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */,
+				D0049B801A05B34F00AFF1E6 /* MercuryClient.m */,
 				5471DFF51A055C4F00A894BE /* Main.storyboard */,
 				5471DFF81A055C4F00A894BE /* Images.xcassets */,
 				5471DFFA1A055C4F00A894BE /* LaunchScreen.xib */,
 				5471DFEF1A055C4F00A894BE /* EmojiPass.xcdatamodeld */,
 				5471DFE81A055C4F00A894BE /* Supporting Files */,
-				D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */,
-				D0049B801A05B34F00AFF1E6 /* MercuryClient.m */,
 			);
 			path = EmojiPass;
 			sourceTree = "<group>";

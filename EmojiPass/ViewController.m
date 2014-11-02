@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Mimee Xu. All rights reserved.
 //
 #import "ViewController.h"
-
+#import "MercuryClient.h"
 
 @interface ViewController ()
 
@@ -21,6 +21,8 @@
     [super viewDidLoad];
     CGRect insetBounds = self.view.bounds;
     
+    MercuryClient *client = [MercuryClient sharedClient];
+
     // Initialize buttons
     self.calibrateButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, insetBounds.size.height/3, insetBounds.size.width, 100);
@@ -31,7 +33,7 @@
     
     // Add button actions
     [self.calibrateButton addTarget:self action:@selector(calibrateButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.payButton addTarget:self action:@selector(payButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.payButton addTarget:client action:@selector(processPayment) forControlEvents:UIControlEventTouchUpInside];
     
     
     // Add to view
@@ -40,6 +42,8 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
 
 #pragma mark - Button Actions
 - (void)calibrateButtonPressed {

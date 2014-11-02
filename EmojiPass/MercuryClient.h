@@ -11,6 +11,9 @@
 
 @interface MercuryClient : NSObject
 
-+ (MercuryClient *)sharedFSClient;
++ (MercuryClient *)sharedClient;
+
+- (void)processPayment;
+    
 
 @end
