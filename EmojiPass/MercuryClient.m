@@ -22,9 +22,11 @@
     return sharedFSClient;
 }
 
-- (void)processPayment {
+- (void)processPaymentAmount:(float)amount
+                 withSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    //NSDictionary *parameters = @{@"foo": @"bar"};
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -35,7 +37,7 @@
                                                     @"InvoiceNo":@"1",
                                                     @"RefNo":@"1",
                                                     @"Memo":@"emojipass Money2020",
-                                                    @"Purchase":@"1.00",
+                                                    @"Purchase":[NSString stringWithFormat:@"%0.2f",amount],
                                                     @"Frequency":@"OneTime",
                                                     @"RecordNo":@"OdDOgYVlrkVeir9/q9lDtjinQwZ7rUsh8tua5x1YYSMiEgUQCSIQCI1B",
                                                     @"OperatorID":@"money2020"
@@ -43,9 +45,9 @@
     ];
     
     [manager POST:@"https://w1.mercurycert.net/PaymentsAPI/credit/salebyrecordno" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        success(operation, responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        failure(failure, error);
     }];
 }
 

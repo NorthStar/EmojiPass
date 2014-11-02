@@ -13,7 +13,8 @@
 
 + (MercuryClient *)sharedClient;
 
-- (void)processPayment;
+- (void)processPaymentAmount:(float)amount
+                 withSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
     
-
 @end
