@@ -56,7 +56,7 @@
 		5471E0011A055C5000A894BE /* EmojiPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5471E0061A055C5000A894BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5471E0071A055C5000A894BE /* EmojiPassTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiPassTests.m; sourceTree = "<group>"; };
-		5471E0111A055F6500A894BE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		5471E0111A055F6500A894BE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = EmojiPass/opencv2.framework; sourceTree = "<group>"; };
 		5471E0131A0562A200A894BE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = EmojiPass/PrefixHeader.pch; sourceTree = "<group>"; };
 		5471E0171A0574D200A894BE /* CameraProcessingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraProcessingViewController.h; sourceTree = "<group>"; };
 		5471E0181A0574D200A894BE /* CameraProcessingViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraProcessingViewController.mm; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		5471DFDC1A055C4F00A894BE = {
 			isa = PBXGroup;
 			children = (
+				5471E0111A055F6500A894BE /* opencv2.framework */,
 				5471E02C1A05857100A894BE /* Foundation.framework */,
 				5471E02A1A05856A00A894BE /* UIKit.framework */,
 				5471E0281A05856300A894BE /* QuartzCore.framework */,
@@ -170,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				5471DFE91A055C4F00A894BE /* Info.plist */,
-				5471E0111A055F6500A894BE /* opencv2.framework */,
 				5471DFEA1A055C4F00A894BE /* main.m */,
 			);
 			name = "Supporting Files";
