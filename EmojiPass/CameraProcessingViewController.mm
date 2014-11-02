@@ -31,7 +31,7 @@ using namespace cv;
 
 @property (nonatomic, strong) NSMutableDictionary *masterProperty;
 @property (nonatomic, strong) NSMutableDictionary *globalProperty;
-
+@property (nonatomic, strong, readwrite) NSString *state;
 
 @end
 
@@ -235,10 +235,9 @@ using namespace cv;
 
 //Problem: the emoticon and the analysis are not yet associated
 - (void)saveFacialFeature: (NSDictionary *)dictionaryData {
-    if ([self.callBackCount intValue] >= 27) {
+    if ([self.callBackCount intValue] == 80) {
         [self stopProcessing];
     }
-    
     NSArray *face = [dictionaryData objectForKey:@"face"];
     if (!face) {
         return;//return early if no face is found
@@ -260,7 +259,7 @@ using namespace cv;
 }
 
 - (void)stopTapingForSmiles {
-    [self.videoCamera stop];
+//    [self.videoCamera stop];
     
     if ([self.currentString isEqualToString:@":)"]) {
         self.currentString = @";-P";
@@ -300,21 +299,31 @@ using namespace cv;
     
     if (![self.currentString isEqualToString:@":-D"]) {
         self.callBackCount = [NSNumber numberWithInt:50];
-        [self.videoCamera start];
+//        [self.videoCamera start];
     } else {
         if (self.globalProperty) {
-            [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+            if ([self.state isEqualToString:@"calibrate"]) {
+                [self.masterProperty setObject:self.globalProperty forKey:self.currentString];
+            } else {
+                [self compare:[NSMutableDictionary dictionaryWithDictionary:((NSDictionary *)[self.masterProperty objectForKey:self.currentString])] with: self.globalProperty];
+            }
         }
     }
     //set state to stop
 }
 
 
+- (void)compare: (NSMutableDictionary *)left with: (NSMutableDictionary *)right{
+    return;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark - Overwriting setter
+- (void)setState: (NSString *)state {
+    _state = state;
+}
 
 @end
