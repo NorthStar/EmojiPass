@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543AC07C1A0644D80004B127 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 543AC07A1A0644D80004B127 /* fontawesome-webfont.ttf */; };
+		543AC07D1A0644D80004B127 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 543AC07B1A0644D80004B127 /* FontAwesome.otf */; };
 		545E186B1A05D2C20069FC67 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186A1A05D2C20069FC67 /* libicucore.dylib */; };
 		545E186D1A05D2CC0069FC67 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186C1A05D2CC0069FC67 /* libc++.dylib */; };
 		545E186F1A05D2D80069FC67 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545E186E1A05D2D80069FC67 /* CFNetwork.framework */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		543AC07A1A0644D80004B127 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../Downloads/font-awesome-4.2.0/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		543AC07B1A0644D80004B127 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "../../../Downloads/font-awesome-4.2.0/fonts/FontAwesome.otf"; sourceTree = "<group>"; };
 		545E186A1A05D2C20069FC67 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		545E186C1A05D2CC0069FC67 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		545E186E1A05D2D80069FC67 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -182,6 +186,8 @@
 				D0049B7F1A05B34F00AFF1E6 /* MercuryClient.h */,
 				D0049B801A05B34F00AFF1E6 /* MercuryClient.m */,
 				5471DFF51A055C4F00A894BE /* Main.storyboard */,
+				543AC07A1A0644D80004B127 /* fontawesome-webfont.ttf */,
+				543AC07B1A0644D80004B127 /* FontAwesome.otf */,
 				D0049B821A05E17900AFF1E6 /* CreditCardViewController.h */,
 				D0049B831A05E17900AFF1E6 /* CreditCardViewController.m */,
 				5471DFF81A055C4F00A894BE /* Images.xcassets */,
@@ -310,6 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5471DFF71A055C4F00A894BE /* Main.storyboard in Resources */,
+				543AC07D1A0644D80004B127 /* FontAwesome.otf in Resources */,
+				543AC07C1A0644D80004B127 /* fontawesome-webfont.ttf in Resources */,
 				5471DFFC1A055C4F00A894BE /* LaunchScreen.xib in Resources */,
 				5471DFF91A055C4F00A894BE /* Images.xcassets in Resources */,
 			);
@@ -494,7 +502,6 @@
 					"$(PROJECT_DIR)/EmojiPass",
 				);
 				GCC_PREFIX_HEADER = "${PROJECT_DIR}/EmojiPass/PrefixHeader.pch";
-
 				INFOPLIST_FILE = EmojiPass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

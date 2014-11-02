@@ -21,6 +21,9 @@ using namespace cv;
 @property (nonatomic, strong) CvVideoCamera *videoCamera;
 @property (nonatomic, strong) NSString *parseJsId;
 @property (nonatomic, strong) NSNumber *count;
+@property (nonatomic, strong) NSNumber *callBackCount;
+
+@property (nonatomic, strong) NSMutableDictionary *globalProperty;
 
 @end
 
@@ -33,6 +36,9 @@ using namespace cv;
     self.parseJsId = @"BjbkS4leuED1ttosql3FfkUXiH5CqU8EYeZJPPoc";
     
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //initialize the global property
+    self.globalProperty = nil;
     
     //Add the imageview
     CGRect bounds = self.view.bounds;
@@ -52,6 +58,8 @@ using namespace cv;
     self.videoCamera.grayscaleMode = NO;
     
     self.count = [NSNumber numberWithInt:0];
+    self.callBackCount = [NSNumber numberWithInt:0];
+    
     [self.videoCamera start];
 }
 
@@ -121,8 +129,8 @@ using namespace cv;
 
 - (void)postFaceToAmazon: (UIImage *)image {
     
-    if ([self.count intValue] == 100) {
-        
+    if ([self.count intValue] >= 30) {
+        [self stopTaping];
     }
     __block NSNumber *countCopy = self.count;
 
@@ -173,6 +181,7 @@ using namespace cv;
         NSData *rawBody = response.rawBody;
         NSDictionary *tideData = [NSJSONSerialization JSONObjectWithData:rawBody options: 0 error: &error];
         NSLog(@"%@", tideData);
+        self.callBackCount = [NSNumber numberWithInt:[self.callBackCount intValue] + 1];
         
         [self saveFacialFeature:tideData];
     }];
@@ -181,16 +190,41 @@ using namespace cv;
 
 
 - (void)saveFacialFeature: (NSDictionary *)dictionaryData {
-    NSDictionary *face = [dictionaryData objectForKey:@"face"];
+    if ([self.callBackCount intValue] >= 30) {
+        [self stopProcessing];
+    }
+    
+    NSArray *face = [dictionaryData objectForKey:@"face"];
     if (!face) {
         return;//return early if no face is found
     }
+    
+    if ([face isKindOfClass:[NSArray class]]) {
+        if (face.count == 0) {
+            return;
+        }
+    }
     //
-    //NSDictionary *position = [face objectForKey:@"position"];
-    // float eyeToNose = [position objectForKey:@"eye_left"]'
+    NSDictionary *position = [[face firstObject] objectForKey:@"position"];
+    float eyeToNose = [[[position objectForKey:@"eye_left"] objectForKey:@"x"] floatValue];
+    if (eyeToNose > 0) {
+        
+        [self.globalProperty setObject:position forKey:@"position"];
+        [self.globalProperty setObject:[[[[face firstObject] objectForKey:@"attribute"] objectForKey:@"gender"] objectForKey:@"value"] forKey:@"gender"];
+    }
 }
 
-
+- (void)stopTaping {
+    [self.videoCamera stop];
+    self.count = [NSNumber numberWithInt:0];
+}
+- (void)stopProcessing {
+    if (self.globalProperty) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    //set state to stop
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
