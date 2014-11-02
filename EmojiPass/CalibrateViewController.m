@@ -42,8 +42,17 @@
 
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
+    if ([keyPath isEqualToString:@"masterProperty"]) {
+        NSLog(@"camera processing view controller state: %@", change);
+    }
+    //}
+}
+
 - (void)calibrateButtonPressed {
     CameraProcessingViewController *calibrateCamera = [[CameraProcessingViewController alloc] init];
+    [calibrateCamera addObserver:self forKeyPath:@"masterProperty" options:NSKeyValueObservingOptionNew context:nil];
     [calibrateCamera setState:@"calibrate"];
     [self presentViewController:calibrateCamera animated:YES completion:nil];
     

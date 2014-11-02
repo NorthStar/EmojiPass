@@ -29,7 +29,7 @@
     
     // Initialize buttons
     self.calibrateButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, 80, insetBounds.size.width, 100);
+    self.calibrateButton.frame = CGRectMake(insetBounds.origin.x, 60, insetBounds.size.width, 100);
     
     self.payButton = [[UIButton alloc] initWithFrame:CGRectMake(insetBounds.origin.x, 350, insetBounds.size.width, 100)];
     self.payButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:26];
@@ -39,22 +39,34 @@
     
     // Add button actions
     [self.calibrateButton addTarget:self action:@selector(calibrateButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.payButton addTarget:self action:@selector(processPayment) forControlEvents:UIControlEventTouchUpInside];
+    [self.payButton addTarget:self action:@selector(payButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     // Add to view
     [self.view addSubview:self.calibrateButton];
     [self.view addSubview:self.payButton];
 }
 
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    //if ([object isKindOfClass:[CameraProcessingViewController class]]) {
+        if ([keyPath isEqualToString:@"masterProperty"]) {
+            NSLog(@"camera processing view controller state: %@", change);
+        }
+    //}
+}
+
 #pragma mark - Button Actions
 - (void)calibrateButtonPressed {
     CameraProcessingViewController *calibrateCamera = [[CameraProcessingViewController alloc] init];
+    [calibrateCamera addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
     [self presentViewController:calibrateCamera animated:YES completion:nil];
     
     return;
 }
 - (void)payButtonPressed {
     CameraProcessingViewController *payCamera = [[CameraProcessingViewController alloc] init];
+    [payCamera addObserver:self forKeyPath:@"masterProperty" options:NSKeyValueObservingOptionNew context:nil];
     [payCamera setState:@"verify"];
     [self presentViewController:payCamera animated:YES completion:nil];
     return;
