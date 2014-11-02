@@ -65,7 +65,7 @@ using namespace cv;
     cvtColor(image, image_copy, COLOR_BGR2GRAY);
     
     // invert image
-    bitwise_not(image_copy, image_copy);
+   // bitwise_not(image_copy, image_copy);
     
     //Convert BGR to BGRA (three channel to four channel)
     Mat bgr;
@@ -120,6 +120,10 @@ using namespace cv;
 
 
 - (void)postFaceToAmazon: (UIImage *)image {
+    
+    if ([self.count intValue] == 100) {
+        
+    }
     __block NSNumber *countCopy = self.count;
 
     /*  UIImagePNGRep instead of JPEG */
